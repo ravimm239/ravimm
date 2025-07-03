@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: insurance
+    schema: raw         # ⬅️ this is the SCHEMA in Snowflake (MAGMUTUAL_INSURANCE.RAW)
+    database: "{{ env_var('DBT_SF_SILVER_DB') }}"  # Use your env var, like MAGMUTUAL_INSURANCE
+
+    tables:
+      - name: raw_customers
+        description: "Raw customers data from external source"

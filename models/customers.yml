@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: customers
+    description: "Customer data from source"
+    config:
+      src_name: "CUSTOMERS"
+      stage: "BRONZE"
+      ops_upd: "UPD"
+      ops_ins: "INS"
+      status_success: "Success"
+      status_start: "Started"
+      status_fail: "Failed"
+      proc_typ_msg_start: "Started validation checks for Customers Table"
+      proc_typ_msg_success: "Validation checks for Customers Table completed successfully"
+      integration_id: ''
+      flag: 'Y'
+
+    columns:
+      - name: customer_id
+        description: "Unique identifier for customer"
+        tests:
+          - unique
+          - not_null
+
+      - name: phone_number
+        description: "Customer contact number"
+        tests:
+          - not_null
